@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ntf_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/status_bar_play"
+        android:layout_width="45dp"
+        android:layout_gravity="center"
+        android:layout_height="45dp"
+        android:background="@drawable/play_buton_notif"
+        android:src="@drawable/play_ntf"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/cd_play" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/status_bar_button_info_container_padding_left" >
+
+
+    </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/status_bar_collapse"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/close"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
+
+</RelativeLayout>
