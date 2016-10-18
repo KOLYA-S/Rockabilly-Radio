@@ -1,4 +1,6 @@
 # Rockabilly-Radio
 Online/Stream radio with HTML parsing
 
-Tutorial you can found at https://tproger.ru/?p=22917
+Tutorial you can found [here](https://tproger.ru/articles/android-radio/)
+
+[Google Play](https://play.google.com/store/apps/details?id=mgc.rockabillyradio)
