@@ -3,6 +3,8 @@ package mgc.rockabillyradio;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.app.Service;
@@ -11,6 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import io.github.nikhilbhutani.analyzer.DataAnalyzer;
 
 public class NotificationService extends Service {
 
@@ -44,15 +50,36 @@ public class NotificationService extends Service {
 
         views.setOnClickPendingIntent(R.id.status_bar_collapse, pcloseIntent);
 
+        if (pos == 0)
+        {
+            views.setImageViewResource(R.id.status_bar_play,
+                    R.drawable.pause_ntf);
+        }
 
         if(pos == 1) {
             views.setImageViewResource(R.id.status_bar_play,
                     R.drawable.pause_ntf);
+            if(MainActivity.control_button!=null)
+            {
+                MainActivity.control_button.setImageResource(R.drawable.play);
+                MainActivity.playing_animation.setVisibility(View.GONE);
+                MainActivity.loading_animation.setVisibility(View.VISIBLE);
+                MainActivity.control_button.setVisibility(View.GONE);
+                MainActivity.controlIsActivated = true;
+            }
         }
         if(pos == 2)
         {
             views.setImageViewResource(R.id.status_bar_play,
                     R.drawable.play_ntf);
+            if(MainActivity.control_button!=null)
+            {
+                MainActivity.control_button.setImageResource(R.drawable.play);
+                MainActivity.playing_animation.setVisibility(View.GONE);
+                MainActivity.loading_animation.setVisibility(View.GONE);
+                MainActivity.control_button.setVisibility(View.VISIBLE);
+                MainActivity.controlIsActivated = false;
+            }
         }
         status = new Notification.Builder(this).build();
         status.contentView = views;
@@ -78,11 +105,11 @@ return null;
         context = this;
         if (intent.getAction().equals(Const.ACTION.STARTFOREGROUND_ACTION)) {
             isPause = false;
-            showNotification(1);
+            showNotification(0);
             Player.start(Const.RADIO_PATH, this);
         }
         else if (intent.getAction().equals(Const.ACTION.PLAY_ACTION)) {
-            if(isPause) {
+            if(!isPause) {
                 showNotification(2);
                 Player.stop();
                 isPause = true;
@@ -96,10 +123,19 @@ return null;
         }
         else if (intent.getAction().equals(
                 Const.ACTION.STOPFOREGROUND_ACTION)) {
+            if(MainActivity.control_button!=null)
+            {
+                MainActivity.control_button.setImageResource(R.drawable.play);
+                MainActivity.playing_animation.setVisibility(View.GONE);
+                MainActivity.loading_animation.setVisibility(View.GONE);
+                MainActivity.control_button.setVisibility(View.VISIBLE);
+                MainActivity.controlIsActivated = false;
+            }
             Player.stop();
             stopForeground(true);
             stopSelf();
         }
+
         return START_STICKY;
     }
 

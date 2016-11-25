@@ -1,7 +1,9 @@
 package mgc.rockabillyradio;
 
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +18,10 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import io.github.nikhilbhutani.analyzer.DataAnalyzer;
+
+import static mgc.rockabillyradio.MainActivity.convertToStringRepresentation;
+
 public class GetTrackInfo extends AsyncTask<Void, Void, Void> {
 
     @Override
@@ -27,6 +33,7 @@ public class GetTrackInfo extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
 
         try {
+
             Document doc = Jsoup.connect(Const.TRACK_INFO_URL).get();
             String first_letter = doc.getElementsByClass("boxed").select("p").get(1).toString().substring(29, doc.getElementsByClass("boxed").select("p").get(1).toString().length());
 
@@ -34,9 +41,20 @@ public class GetTrackInfo extends AsyncTask<Void, Void, Void> {
             String first = parts[0];
             MainActivity.artist = first;
             String second = parts[1];
+
+//            MainActivity.dataAnalyzer = new DataAnalyzer(MainActivity.activity);
+//            MainActivity.app = MainActivity.activity.getApplicationInfo();
+//
+//            PackageManager packageManager = MainActivity.activity.getPackageManager();
+//            try {
+//                MainActivity.app = packageManager.getApplicationInfo(MainActivity.activity.getApplicationInfo().packageName, 0);
+//            } catch (final PackageManager.NameNotFoundException e) {
+//            }
+//
+//            Log.e("NAME", MainActivity.app.packageName+"?");
+
             MainActivity.track = second.substring(0, second.length() - 9);
             readJsonFromUrl("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + MainActivity.artist.replace(" ", "%20") + "&api_key="+Const.LAST_FM_KEY+"&format=json".replace(" ", "%20"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,6 +66,7 @@ public class GetTrackInfo extends AsyncTask<Void, Void, Void> {
         super.onPostExecute(result);
 
         MainActivity.setSongData();
+
     }
 
     public static String readJsonFromUrl(String url) throws IOException {
@@ -69,21 +88,35 @@ public class GetTrackInfo extends AsyncTask<Void, Void, Void> {
             sb.append((char) cp);
         }
         Log.e("response", sb.toString());
-        JSONObject dataJsonObj = null;
-        try {
-            dataJsonObj = new JSONObject(sb.toString());
-            Log.e("JSON", dataJsonObj.toString());
-            if (!dataJsonObj.toString().contains("{\"error\":6,\"message\":\"The artist you supplied could not be found\",\"links\":[]}")) {
-                Log.e("img", dataJsonObj.optJSONObject("artist").optJSONArray("image").optJSONObject(4).optString("#text"));
-                if (dataJsonObj.optJSONObject("artist").optJSONArray("image").optJSONObject(4).optString("#text").toString().length() > 10) {
-                    MainActivity.album = dataJsonObj.optJSONObject("artist").optJSONArray("image").optJSONObject(4).optString("#text");
-                } else {
-                    MainActivity.album = "";
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject dataJsonObj;
+     //   try {
+            MainActivity.album = "";
+
+//            dataJsonObj = new JSONObject(sb.toString());
+//            if (!isError(dataJsonObj)) {
+//                if(dataJsonObj.optJSONObject("artist").optJSONArray("image").optJSONObject(4).optString("#text")!=null){
+//                    if (dataJsonObj.optJSONObject("artist").optJSONArray("image").optJSONObject(4).optString("#text").toString().length() > 10) {
+//                                               MainActivity.album = "";
+//
+//                        // MainActivity.album = dataJsonObj.optJSONObject("artist").optJSONArray("image").optJSONObject(4).optString("#text");
+//                    } else {
+//                        MainActivity.album = "";
+//                    }
+//                }
+//                else MainActivity.album = "";
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
         return sb.toString();
+    }
+
+    static boolean isError(JSONObject dataJsonObj)
+    {
+        if(!dataJsonObj.toString().contains("{\"error\":6,\"message\":\"The artist you supplied could not be found\",\"links\":[]}"))
+        {
+            return true;
+        }
+        return false;
     }
 }

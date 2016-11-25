@@ -30,6 +30,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_694a68e5d41e026932cb3e7ab8268b46b0044b3c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.google.android.exoplayer/exoplayer/r1.5.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c50baf72335934948f286c350e9db5c476939588">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.google.android.exoplayer-exoplayer-r1.5.3_62e1953d5c26e5953682ce955f7dedd9aa182e1a.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -48,12 +66,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_3fab16f65459d2b0b77e99590f7d672c03701d95.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_fe85504a4d717c8d40e9eec4e57839c5c64ea8c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.2"
         sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
         <dex dex="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_b0ec28ea0f5b0a50442767dfef70e70e021a359b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_28cabbbd21463a0c2cb7cc4cf8913cfd98b0aff0.jar" />
     </item>
     <item
         is-multidex="false"
@@ -66,12 +111,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.yandex.android/mobmetricalib/2.51/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3543a481dc3e4b6b857ba63747fb3c8dc24a76ba">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.yandex.android-mobmetricalib-2.51_097d39eceabdb6cefa6a086c4c011451f738d48f.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.2"
         sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
         <dex dex="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_0fd2dae3524c021d777937a02653d0040d37b1b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_67a624ae02579756aa1bd0b4b59150257a8cdc9f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -93,12 +156,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_06a343933e405c5cdf6da6b0cc529dd6007d8882.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
         <dex dex="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_3fbaf9d5f3553ff0f7aef2e53a5b9fa4c32f1fe5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_69b62d8b5944bbe8a7e7f13d247dc527f1aa9ad5.jar" />
     </item>
     <item
         is-multidex="false"
@@ -111,12 +192,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_8d68ea6b59820f10a33f8d854d2ad702d974dc99.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/exploded-aar/com.google.android.exoplayer/exoplayer/r1.5.3/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.2"
         sha1="c50baf72335934948f286c350e9db5c476939588">
         <dex dex="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.google.android.exoplayer-exoplayer-r1.5.3_0c3a866323017966cdde0b53b6337d39521e845d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_667fa62aa9dcd7556f615c6473daa1c74f5f897f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -129,12 +228,48 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.wang.avi/library/2.1.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e699699fae0092703de1d02b217f43803d0f7e0a">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.wang.avi-library-2.1.3_1e865f98822094172b683004518d1ce4c609bd3c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_75b18e7eab95cf91e91b19dc045635dc390c806e.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.2"
         sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
         <dex dex="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_2b3d4f94f191e19c526889cc9050f5b9e4c5883c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-24.2.1_2e5480afaca6c1c0bcac30d34127e6ef5d0daa42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_617b00bd6096a179166f6aad52cc074a5c33f05c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -162,6 +297,42 @@
         revision="24.0.2"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
         <dex dex="/Users/KOLYAS/Desktop/RockabillyRadio/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_2303769829aad612e39d24ab25c2d959fed1e890.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_9477716e4b13e2963704c47dcb70a333cb71c232.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.github.NikhilBhutani/EasyDataAnalyzer/1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e1edb6ff4f21ecce684469e0a35557b247898aac">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.github.NikhilBhutani-EasyDataAnalyzer-1.0_13a98fc7a196f0c4813c1652583403417ad958f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_0524504c87a6888e28c89337bff8d9584ca2f0a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/KOLYAS/Documents/RockabillyRadio/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_df26513ee0b0e3683e1b214621a9b63e63bb0ecf.jar" />
     </item>
     <item
         is-multidex="false"

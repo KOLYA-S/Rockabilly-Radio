@@ -3,18 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="mgc.rockabillyradio">
 
+    <!--Permisions for internet connection and vibrate function-->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         tools:replace="android:icon"
         android:allowBackup="true"
+        android:name=".MyApp"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="sensorPortrait">
+        <activity android:name=".MainActivity" android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +23,7 @@
             </intent-filter>
         </activity>
 
+        <!--Service for player and notification-->
         <service android:name=".NotificationService" />
 
     </application>

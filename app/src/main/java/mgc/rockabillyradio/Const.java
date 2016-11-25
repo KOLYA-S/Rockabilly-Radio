@@ -6,14 +6,14 @@ package mgc.rockabillyradio;
 
 public class Const {
 
-    public static String LAST_FM_KEY = "YOUR_KEY";
+    public static String LAST_FM_KEY = "3ccfc2669d19581d8ae2e40f5399042c";
 
     public static String RADIO_PATH = "http://lin3.ash.fast-serv.com:6026/stream_96";
     public static String TRACK_INFO_URL = "http://199.58.163.11/rr/now_playing.php";
 
     public static String SERVER_PHOTO_PATH = "http://pavelmikhaylov.ru/radio/";
     public static String PHOTO_TYPE = ".jpg";
-    public static int SERVER_PHOTOS_COUNT = 10;
+    public static int SERVER_PHOTOS_COUNT = 16;
 
     public static int PHOTO_LOAD_REFRESH_TIME = 20000;
 

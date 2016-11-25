@@ -22,6 +22,10 @@ public class Player {
 
     public static void start(String URL, Context context)
     {
+        if(exoPlayer!=null)
+        {
+            exoPlayer.stop();
+        }
         Uri URI = Uri.parse(URL);
         FrameworkSampleSource sampleSource = new FrameworkSampleSource(context,URI, null);
         audioRenderer = new MediaCodecAudioTrackRenderer(sampleSource, null, true);

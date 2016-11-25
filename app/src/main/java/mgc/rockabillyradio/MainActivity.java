@@ -1,35 +1,50 @@
 package mgc.rockabillyradio;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.text.DecimalFormat;
 import java.util.Random;
+
+import io.github.nikhilbhutani.analyzer.DataAnalyzer;
 
 public class MainActivity extends AppCompatActivity {
 
     static Activity activity;
 
+    int isShow = 0;
     // Screen background photo
     static ImageView background;
 
     //Strings for showing song data and detecting old album photo
     static String artist, track, album, albumOld;
 
-    static TextView title_tv, artist_tv, track_tv;
+    static TextView title_tv, artist_tv, track_tv, data_tv;
     static CircularSeekBar volumeChanger;
 
     // Animation on bottom of the screen when stream is loaded
@@ -42,7 +57,14 @@ public class MainActivity extends AppCompatActivity {
     static ImageButton control_button;
 
     // Boolean for check if play/pause button is activated
-    boolean controlIsActivated = false;
+    static boolean controlIsActivated = false;
+    static DataAnalyzer dataAnalyzer;
+    static ApplicationInfo app;
+
+    private static final long K = 1024;
+    private static final long M = K * K;
+    private static final long G = M * K;
+    private static final long T = G * K;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +72,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activity = this;
+
+        try {
+            app = this.getPackageManager().getApplicationInfo("mgc.rockabillyradio", 0);
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast toast = Toast.makeText(this, "error in getting icon", Toast.LENGTH_SHORT);
+            toast.show();
+            e.printStackTrace();
+        }
         initialise();
         setCustomFont();
         startListenVolume();
         new GetTrackInfo().execute();
         startRefreshing();
+        startCounting();
     }
 
     // Initialise all views, animations and set click listeners
@@ -69,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         loading_animation = (AVLoadingIndicatorView) findViewById(R.id.load_animation);
         control_button = (ImageButton) findViewById(R.id.control_button);
         control_button.setOnClickListener(controlButtonListener);
+        data_tv = (TextView) findViewById(R.id.data_tv);
+        data_tv.setVisibility(View.VISIBLE);
     }
 
     // Function for set custom font to title text view in toolbar
@@ -108,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bitmap = ((BitmapDrawable) background.getDrawable()).getBitmap();
                 Drawable d = new BitmapDrawable(activity.getResources(), bitmap);
                 Picasso.with(activity).load(Const.SERVER_PHOTO_PATH + (rn.nextInt(Const.SERVER_PHOTOS_COUNT) + 1) + Const.PHOTO_TYPE).placeholder(d).into(background);
+            //    Picasso.with(activity).load(Const.SERVER_PHOTO_PATH + 14 + Const.PHOTO_TYPE).placeholder(d).into(background);
 
             } else {
                 Bitmap bitmap = ((BitmapDrawable) background.getDrawable()).getBitmap();
@@ -132,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startRefreshing()
     {
+        dataAnalyzer = new DataAnalyzer(this);
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -142,6 +178,34 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 new GetTrackInfo().execute();
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
+    }
+
+
+    public void startCounting()
+    {
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(500);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(dataAnalyzer!=null) {
+                                    Log.e("DATA USAGE", convertToStringRepresentation(Long.valueOf(MainActivity.dataAnalyzer.getReceivedData(MainActivity.app))));
+                                    Log.e("DATA USAGE", "------");
+                                    MainActivity.data_tv.setText(convertToStringRepresentation(Long.valueOf(MainActivity.dataAnalyzer.getReceivedData(MainActivity.app))));
+                                }
                             }
                         });
                     }
@@ -176,9 +240,93 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public static String convertToStringRepresentation(final long value){
+        final long[] dividers = new long[] { T, G, M, K, 1 };
+        final String[] units = new String[] { "TB", "GB", "MB", "KB", "B" };
+        if(value < 1)
+            throw new IllegalArgumentException("Invalid file size: " + value);
+        String result = null;
+        for(int i = 0; i < dividers.length; i++){
+            final long divider = dividers[i];
+            if(value >= divider){
+                result = format(value, divider, units[i]);
+                break;
+            }
+        }
+        return result;
+    }
+
+    private static String format(final long value,
+                                 final long divider,
+                                 final String unit){
+        final double result =
+                divider > 1 ? (double) value / (double) divider : (double) value;
+        return new DecimalFormat("#,##0.#").format(result) + " " + unit;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    void enterReveal() {
+        isShow = 1;
+        // previously invisible view
+        final CardView myView = (CardView) findViewById(R.id.analyzer);
+        myView.setVisibility(View.VISIBLE);
+        // get the center for the clipping circle
+        int cx = myView.getMeasuredWidth() - 100;
+        int cy = -100;
+
+        // get the final radius for the clipping circle
+        int finalRadius = Math.max(myView.getWidth(), myView.getHeight())*2 ;
+
+        // create the animator for this view (the start radius is zero)
+        Animator anim =
+                ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius).setDuration(700);
+
+        // make the view visible and start the animation
+        anim.start();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    void exitReveal() {
+        // previously visible view
+        isShow = 0;
+        final CardView myView = (CardView) findViewById(R.id.analyzer);
+
+        // get the center for the clipping circle
+        int cx = myView.getMeasuredWidth() - 100;
+        int cy = -100;
+
+        // get the initial radius for the clipping circle
+        int initialRadius = myView.getWidth();
+
+        // create the animation (the final radius is zero)
+        Animator anim =
+                ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0).setDuration(700);
+
+        // make the view invisible when the animation is done
+        anim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                myView.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        // start the animation
+        anim.start();
+    }
+
     @Override
     public void onBackPressed() {
         Player.stop();
         super.onBackPressed();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void enter(View view) {
+//        if(isShow == 1)
+//        {
+//            exitReveal();
+//        }
+//        else enterReveal();
     }
 }
