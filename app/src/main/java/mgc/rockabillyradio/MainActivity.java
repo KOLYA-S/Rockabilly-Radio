@@ -1,7 +1,5 @@
 package mgc.rockabillyradio;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,12 +12,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,39 +27,36 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 import io.github.nikhilbhutani.analyzer.DataAnalyzer;
+import mgc.rockabillyradio.audio.Player;
+import mgc.rockabillyradio.connections.GetTrackInfo;
+import mgc.rockabillyradio.notifications.NotificationService;
 
 public class MainActivity extends AppCompatActivity {
 
-    static Activity activity;
+    public static Activity activity;
 
-    int isShow = 0;
     // Screen background photo
-    static ImageView background;
+    public static ImageView background;
 
     //Strings for showing song data and detecting old album photo
-    static String artist, track, album, albumOld;
+    public static String artist, track, album, albumOld;
 
-    static TextView title_tv, artist_tv, track_tv, data_tv;
-    static CircularSeekBar volumeChanger;
+    public static TextView title_tv, artist_tv, track_tv, data_tv;
+    public static CircularSeekBar volumeChanger;
 
     // Animation on bottom of the screen when stream is loaded
-    static AVLoadingIndicatorView playing_animation;
+    public static AVLoadingIndicatorView playing_animation;
 
     // Stram loading animation on the center of screen
-    static AVLoadingIndicatorView loading_animation;
+    public static AVLoadingIndicatorView loading_animation;
 
     // Button for start/stop playing audio
-    static ImageButton control_button;
+    public static ImageButton control_button;
 
     // Boolean for check if play/pause button is activated
-    static boolean controlIsActivated = false;
-    static DataAnalyzer dataAnalyzer;
-    static ApplicationInfo app;
-
-    private static final long K = 1024;
-    private static final long M = K * K;
-    private static final long G = M * K;
-    private static final long T = G * K;
+    public static boolean controlIsActivated = false;
+    public static DataAnalyzer dataAnalyzer;
+    public static ApplicationInfo app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             app = this.getPackageManager().getApplicationInfo("mgc.rockabillyradio", 0);
-
         } catch (PackageManager.NameNotFoundException e) {
             Toast toast = Toast.makeText(this, "error in getting icon", Toast.LENGTH_SHORT);
             toast.show();
@@ -241,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public static String convertToStringRepresentation(final long value){
-        final long[] dividers = new long[] { T, G, M, K, 1 };
+        final long[] dividers = new long[] { Const.T, Const.G, Const.M, Const.K, 1 };
         final String[] units = new String[] { "TB", "GB", "MB", "KB", "B" };
         if(value < 1)
             throw new IllegalArgumentException("Invalid file size: " + value);
@@ -264,56 +255,6 @@ public class MainActivity extends AppCompatActivity {
         return new DecimalFormat("#,##0.#").format(result) + " " + unit;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    void enterReveal() {
-        isShow = 1;
-        // previously invisible view
-        final CardView myView = (CardView) findViewById(R.id.analyzer);
-        myView.setVisibility(View.VISIBLE);
-        // get the center for the clipping circle
-        int cx = myView.getMeasuredWidth() - 100;
-        int cy = -100;
-
-        // get the final radius for the clipping circle
-        int finalRadius = Math.max(myView.getWidth(), myView.getHeight())*2 ;
-
-        // create the animator for this view (the start radius is zero)
-        Animator anim =
-                ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius).setDuration(700);
-
-        // make the view visible and start the animation
-        anim.start();
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    void exitReveal() {
-        // previously visible view
-        isShow = 0;
-        final CardView myView = (CardView) findViewById(R.id.analyzer);
-
-        // get the center for the clipping circle
-        int cx = myView.getMeasuredWidth() - 100;
-        int cy = -100;
-
-        // get the initial radius for the clipping circle
-        int initialRadius = myView.getWidth();
-
-        // create the animation (the final radius is zero)
-        Animator anim =
-                ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0).setDuration(700);
-
-        // make the view invisible when the animation is done
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                myView.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        // start the animation
-        anim.start();
-    }
 
     @Override
     public void onBackPressed() {
@@ -323,10 +264,6 @@ public class MainActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void enter(View view) {
-//        if(isShow == 1)
-//        {
-//            exitReveal();
-//        }
-//        else enterReveal();
+
     }
 }

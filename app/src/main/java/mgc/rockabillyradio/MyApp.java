@@ -32,7 +32,6 @@ public class MyApp extends Application {
                       @Override
                       public void alertThreshold(Threshold threshold, DataUsage dataUsage) {
                           // Alert somehow!
-                          Log.e("!!!DATA USAGE!!!", dataUsage.getHumanReadableSize()+" |");
                           Toast.makeText(MyApp.this, dataUsage.getHumanReadableSize(), Toast.LENGTH_SHORT).show();
                       }
                   })

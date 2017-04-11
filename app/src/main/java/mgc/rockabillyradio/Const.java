@@ -27,4 +27,9 @@ public class Const {
     }
     public static int FOREGROUND_SERVICE = 101;
 
+    public static final long K = 1024;
+    public static final long M = K * K;
+    public static final long G = M * K;
+    public static final long T = G * K;
+
 }

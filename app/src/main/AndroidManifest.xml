@@ -24,7 +24,6 @@
         </activity>
 
         <!--Service for player and notification-->
-        <service android:name=".NotificationService" />
 
     </application>
 
